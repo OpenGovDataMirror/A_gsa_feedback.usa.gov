@@ -1,0 +1,31 @@
+---
+layout: base
+---
+
+<main class="usa-grid usa-section usa-content usa-layout-docs" id="main-content">
+  <aside class="usa-width-one-fourth usa-layout-docs-sidenav">
+    <nav>
+      <ul class="usa-sidenav-list">
+        <a href="" class="usa-current">
+          {{page.nav_current_title}}
+        </a>
+        <ul class="usa-sidenav-sub_list">
+        {% for item in site.data.navbar.menu %}
+          {% if page.nav_id == item.id %}
+            {% for entry in item.children %}
+            <li>
+              <a class="usa-nav-link" href="{{entry.href}}">
+                <span>{{entry.text}}</span>
+              </a>
+            </li>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+        </ul>
+      </ul>
+    </nav>
+  </aside>
+  <div class="usa-width-three-fourths usa-layout-docs-main_content">
+    {{content}}
+  </div>
+</main>
